@@ -1,0 +1,153 @@
+
+UARTCommunication.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000001a  00800100  0000011a  0000018e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000011a  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .stab         000006cc  00000000  00000000  000001a8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  00000874  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000060  00000000  00000000  00000900  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000297  00000000  00000000  00000960  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000003c  00000000  00000000  00000bf7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000001a7  00000000  00000000  00000c33  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea e1       	ldi	r30, 0x1A	; 26
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 31       	cpi	r26, 0x1A	; 26
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	11 e0       	ldi	r17, 0x01	; 1
+  8c:	aa e1       	ldi	r26, 0x1A	; 26
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	aa 31       	cpi	r26, 0x1A	; 26
+  96:	b1 07       	cpc	r27, r17
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 87 00 	call	0x10e	; 0x10e <main>
+  9e:	0c 94 8b 00 	jmp	0x116	; 0x116 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <USARTInit>:
+  a6:	10 92 c5 00 	sts	0x00C5, r1
+  aa:	85 e0       	ldi	r24, 0x05	; 5
+  ac:	80 93 c4 00 	sts	0x00C4, r24
+  b0:	88 e1       	ldi	r24, 0x18	; 24
+  b2:	80 93 c1 00 	sts	0x00C1, r24
+  b6:	86 e0       	ldi	r24, 0x06	; 6
+  b8:	80 93 c2 00 	sts	0x00C2, r24
+  bc:	08 95       	ret
+
+000000be <USARTReceive>:
+  be:	80 91 c0 00 	lds	r24, 0x00C0
+  c2:	87 ff       	sbrs	r24, 7
+  c4:	fc cf       	rjmp	.-8      	; 0xbe <USARTReceive>
+  c6:	80 91 c6 00 	lds	r24, 0x00C6
+  ca:	08 95       	ret
+
+000000cc <USARTSend>:
+  cc:	90 91 c0 00 	lds	r25, 0x00C0
+  d0:	95 ff       	sbrs	r25, 5
+  d2:	fc cf       	rjmp	.-8      	; 0xcc <USARTSend>
+  d4:	80 93 c6 00 	sts	0x00C6, r24
+  d8:	08 95       	ret
+
+000000da <USARTSendMessage>:
+  da:	cf 93       	push	r28
+  dc:	df 93       	push	r29
+  de:	ec 01       	movw	r28, r24
+  e0:	02 c0       	rjmp	.+4      	; 0xe6 <USARTSendMessage+0xc>
+  e2:	0e 94 66 00 	call	0xcc	; 0xcc <USARTSend>
+  e6:	89 91       	ld	r24, Y+
+  e8:	88 23       	and	r24, r24
+  ea:	d9 f7       	brne	.-10     	; 0xe2 <USARTSendMessage+0x8>
+  ec:	df 91       	pop	r29
+  ee:	cf 91       	pop	r28
+  f0:	08 95       	ret
+
+000000f2 <MainProgramLoop>:
+  f2:	80 e0       	ldi	r24, 0x00	; 0
+  f4:	91 e0       	ldi	r25, 0x01	; 1
+  f6:	0e 94 6d 00 	call	0xda	; 0xda <USARTSendMessage>
+  fa:	8f e3       	ldi	r24, 0x3F	; 63
+  fc:	92 e4       	ldi	r25, 0x42	; 66
+  fe:	af e0       	ldi	r26, 0x0F	; 15
+ 100:	81 50       	subi	r24, 0x01	; 1
+ 102:	90 40       	sbci	r25, 0x00	; 0
+ 104:	a0 40       	sbci	r26, 0x00	; 0
+ 106:	e1 f7       	brne	.-8      	; 0x100 <MainProgramLoop+0xe>
+ 108:	00 c0       	rjmp	.+0      	; 0x10a <MainProgramLoop+0x18>
+ 10a:	00 00       	nop
+ 10c:	f2 cf       	rjmp	.-28     	; 0xf2 <MainProgramLoop>
+
+0000010e <main>:
+ 10e:	0e 94 53 00 	call	0xa6	; 0xa6 <USARTInit>
+ 112:	0e 94 79 00 	call	0xf2	; 0xf2 <MainProgramLoop>
+
+00000116 <_exit>:
+ 116:	f8 94       	cli
+
+00000118 <__stop_program>:
+ 118:	ff cf       	rjmp	.-2      	; 0x118 <__stop_program>

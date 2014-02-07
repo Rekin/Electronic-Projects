@@ -1,0 +1,144 @@
+
+LEDShift.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000a  00800100  000000fe  00000172  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000000fe  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .stab         000006cc  00000000  00000000  0000017c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  00000848  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000060  00000000  00000000  000008d0  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000297  00000000  00000000  00000930  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000003c  00000000  00000000  00000bc7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000001a7  00000000  00000000  00000c03  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ee ef       	ldi	r30, 0xFE	; 254
+  7c:	f0 e0       	ldi	r31, 0x00	; 0
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 30       	cpi	r26, 0x0A	; 10
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	11 e0       	ldi	r17, 0x01	; 1
+  8c:	aa e0       	ldi	r26, 0x0A	; 10
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	aa 30       	cpi	r26, 0x0A	; 10
+  96:	b1 07       	cpc	r27, r17
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 79 00 	call	0xf2	; 0xf2 <main>
+  9e:	0c 94 7d 00 	jmp	0xfa	; 0xfa <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <DisplayDigit>:
+  a6:	2a 98       	cbi	0x05, 2	; 5
+  a8:	8e bd       	out	0x2e, r24	; 46
+  aa:	0d b4       	in	r0, 0x2d	; 45
+  ac:	07 fe       	sbrs	r0, 7
+  ae:	fd cf       	rjmp	.-6      	; 0xaa <DisplayDigit+0x4>
+  b0:	2a 9a       	sbi	0x05, 2	; 5
+  b2:	8f e3       	ldi	r24, 0x3F	; 63
+  b4:	92 e4       	ldi	r25, 0x42	; 66
+  b6:	af e0       	ldi	r26, 0x0F	; 15
+  b8:	81 50       	subi	r24, 0x01	; 1
+  ba:	90 40       	sbci	r25, 0x00	; 0
+  bc:	a0 40       	sbci	r26, 0x00	; 0
+  be:	e1 f7       	brne	.-8      	; 0xb8 <DisplayDigit+0x12>
+  c0:	00 c0       	rjmp	.+0      	; 0xc2 <DisplayDigit+0x1c>
+  c2:	00 00       	nop
+  c4:	08 95       	ret
+
+000000c6 <ShiftInit>:
+  c6:	84 b1       	in	r24, 0x04	; 4
+  c8:	8c 62       	ori	r24, 0x2C	; 44
+  ca:	84 b9       	out	0x04, r24	; 4
+  cc:	85 b1       	in	r24, 0x05	; 5
+  ce:	83 7d       	andi	r24, 0xD3	; 211
+  d0:	85 b9       	out	0x05, r24	; 5
+  d2:	80 e5       	ldi	r24, 0x50	; 80
+  d4:	8c bd       	out	0x2c, r24	; 44
+  d6:	08 95       	ret
+
+000000d8 <MainProgramLoop>:
+  d8:	c0 e0       	ldi	r28, 0x00	; 0
+  da:	d0 e0       	ldi	r29, 0x00	; 0
+  dc:	fe 01       	movw	r30, r28
+  de:	e0 50       	subi	r30, 0x00	; 0
+  e0:	ff 4f       	sbci	r31, 0xFF	; 255
+  e2:	80 81       	ld	r24, Z
+  e4:	0e 94 53 00 	call	0xa6	; 0xa6 <DisplayDigit>
+  e8:	21 96       	adiw	r28, 0x01	; 1
+  ea:	ca 30       	cpi	r28, 0x0A	; 10
+  ec:	d1 05       	cpc	r29, r1
+  ee:	b4 f3       	brlt	.-20     	; 0xdc <MainProgramLoop+0x4>
+  f0:	f3 cf       	rjmp	.-26     	; 0xd8 <MainProgramLoop>
+
+000000f2 <main>:
+  f2:	0e 94 63 00 	call	0xc6	; 0xc6 <ShiftInit>
+  f6:	0e 94 6c 00 	call	0xd8	; 0xd8 <MainProgramLoop>
+
+000000fa <_exit>:
+  fa:	f8 94       	cli
+
+000000fc <__stop_program>:
+  fc:	ff cf       	rjmp	.-2      	; 0xfc <__stop_program>
